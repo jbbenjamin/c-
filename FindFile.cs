@@ -46,7 +46,6 @@ using System.Xml;
 				//If file is found, return the complete filepath
 				foreach (System.IO.FileInfo fi in files)
 				{
-					OpenSpan.Diagnostics.Diagnostic.TraceVerbose("FolderOperations_GC.script1.cs", "fi.name = " + fi.Name + " " + "filename = " + filename);
 					if(fi.Name == filename){
 						fullFilename = fi.FullName;
 						return fullFilename;
@@ -59,10 +58,8 @@ using System.Xml;
 				//For every subfolder, call this function again, treating the subfolder as the new root folder
 				foreach (System.IO.DirectoryInfo dirInfo in subDirs)
 				{
-					OpenSpan.Diagnostics.Diagnostic.TraceVerbose("FolderOperations_GC.script1.cs", "dirInfo.Fullname = " + dirInfo.FullName);
 					// Resursive call for each subdirectory.
 					fullFilename = SearchForFile(dirInfo.FullName, filename);
-					OpenSpan.Diagnostics.Diagnostic.TraceVerbose("FolderOperations_GC.script1.cs", "fullFilename = " + fullFilename);
 					if(fullFilename.EndsWith("\\" + filename) == true)
 					{
 						return fullFilename;	
